@@ -71,52 +71,63 @@ SELECT name, MIN(year_ceremony) FROM oscar WHERE category LIKE '%ACTRESS%' AND w
 
 
 Na categoria Winner, altere todos os valores com "True" para 1 e todos os valores "False" para 0.
+R:
+UPDATE oscar SET winner = '0' WHERE winner = 'false';
+UPDATE oscar SET winner = '1' WHERE winner = 'true';
 
 
 Em qual edição do Oscar "Crash" ganhou o prêmio?
+2006
+SELECT year_ceremony FROM oscar WHERE film LIKE '%Crash' AND winner LIKE '%1%';
 
 
 Que filme merecia ganhar um Oscar e não ganhou?
-
+She
+select * from oscar where winner = "0"
 
 Bom... dê um Oscar para esse filme, então.
-
+update oscar SET winner = "1" where id = 21149;
 
 
 O filme Central do Brasil aparece no Oscar?
-
+não
 
 
 Aliás... Qual sua opinião sobre central do Brasil
-
+Muito bom, chorei no final.
 
 
 Inclua no banco 7 filmes que nunca nem foram nomeados ao Oscar, mas que na sua opinião, merecem.
-
+-
 
 
 Crie uma nova categoria de premiação. Qualquer prêmio que você queira dar. Agora vamos dar esses prêmios aos filmes que você cadastrou na questão acima.
-
+-
 
 
 Qual foi o primeiro ano a ter um prêmio do Oscar?
-
+1928
+SELECT MIN(year_ceremony) FROM oscar;
 
 
 Pensando no ano em que você nasceu: Qual foi o Oscar de melhor filme, Melhor Atriz e Melhor Diretor?
+Louise Dresser	A Ship Comes In	ACTRESS
+George Barnes	The Devil Dancer;	CINEMATOGRAPHY
+Ron Howard	A Beautiful Mind	DIRECTING
 
+SELECT name, film, category FROM oscar WHERE category LIKE '%CINEMATOGRAPHY' OR category LIKE '%ACTRESS' OR category LIKE '%DIRECTING' AND winner LIKE '%1%' AND year_ceremony = '2002' GROUP BY category;
 
 
 Agora procure 7 atrizes que não sejam americanas, europeias ou brasileiras.  Vamos cadastrá-los no nosso banco, mas eles ainda não ganharam o Oscar. Só foram nomeados.
-
+-
 
 
 Agora vamos falar da sua vida. Me diga o nome de uma pessoa que você admira e o que ela fez na sua vida. Agora me diz: Quê prêmio essa pessoa merece?
-
+-
 
 
 [OPCIONAL] - Utilizando o comando 'Alter Table', troque os tipos dos dados da coluna/campo "Winner" para Bit.
-
+-
 
 
 Eduardo Galeano.
